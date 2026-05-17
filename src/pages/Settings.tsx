@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import Input from '../components/common/Input';
-import { Key, Server, Zap } from 'lucide-react';
+import { Key, Server, Zap, Save } from 'lucide-react';
 
 const Settings: React.FC = () => {
   const [settings, setSettings] = useState({
@@ -24,13 +24,13 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6 max-w-2xl">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6 max-w-3xl">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-2">
-          Bot Configuration
+          ⚙️ Bot Configuration
         </h1>
-        <p className="text-[var(--color-text-secondary)]">
+        <p className="text-[var(--color-text-secondary)] text-lg">
           Configure your Discord bot and API settings
         </p>
       </motion.div>
@@ -39,7 +39,9 @@ const Settings: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div className="flex items-center gap-3 mb-6">
-            <Key size={24} className="text-[var(--color-primary)]" />
+            <div className="p-2 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg">
+              <Key size={24} className="text-indigo-500" />
+            </div>
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Discord Bot Token
             </h2>
@@ -59,7 +61,9 @@ const Settings: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div className="flex items-center gap-3 mb-6">
-            <Server size={24} className="text-[var(--color-primary)]" />
+            <div className="p-2 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg">
+              <Server size={24} className="text-indigo-500" />
+            </div>
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Guild ID
             </h2>
@@ -79,7 +83,9 @@ const Settings: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div className="flex items-center gap-3 mb-6">
-            <Zap size={24} className="text-[var(--color-primary)]" />
+            <div className="p-2 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg">
+              <Zap size={24} className="text-indigo-500" />
+            </div>
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Google Gemini API Key
             </h2>
@@ -101,7 +107,7 @@ const Settings: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="p-4 bg-[var(--color-success)] bg-opacity-10 border border-[var(--color-success)] rounded-lg text-[var(--color-success)] font-semibold"
+          className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 rounded-xl text-green-600 dark:text-green-300 font-bold flex items-center gap-2"
         >
           ✓ Settings saved successfully!
         </motion.div>
@@ -110,9 +116,9 @@ const Settings: React.FC = () => {
       {/* Save Button */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Button
-          variant="primary"
           size="lg"
           fullWidth
+          icon={<Save size={20} />}
           onClick={handleSave}
           disabled={!settings.discordToken || !settings.guildId || !settings.geminiKey}
         >

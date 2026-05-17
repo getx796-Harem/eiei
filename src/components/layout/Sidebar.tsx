@@ -33,18 +33,21 @@ const Sidebar: React.FC = () => {
       className="hidden lg:block w-64 bg-[var(--color-bg-primary)] border-r border-[var(--color-border)] h-screen sticky top-16 overflow-y-auto"
     >
       <nav className="p-4 space-y-2">
-        {menuItems.map((item) => {
+        {menuItems.map((item, idx) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
 
           return (
             <Link key={item.path} to={item.path}>
               <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.05 }}
                 whileHover={{ x: 4 }}
                 className={clsx(
                   'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
                   isActive
-                    ? 'bg-[var(--color-primary)] text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
                     : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-secondary)]'
                 )}
               >

@@ -15,13 +15,16 @@ const Navbar: React.FC = () => {
     <motion.nav
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] sticky top-0 z-50 shadow-sm"
+      className="bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] sticky top-0 z-50 shadow-lg backdrop-blur"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-            <h1 className="text-2xl font-bold text-[var(--color-primary)]">✨ Terminal</h1>
+            <div className="text-2xl mr-3">✨</div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+              Terminal
+            </h1>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -30,13 +33,13 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-[var(--color-bg-secondary)] hover:bg-[var(--color-border)] transition-colors"
+              className="p-2 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 transition-all"
               title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
               {theme === 'light' ? (
-                <Moon size={20} className="text-[var(--color-primary)]" />
+                <Moon size={20} className="text-indigo-600" />
               ) : (
-                <Sun size={20} className="text-[var(--color-primary)]" />
+                <Sun size={20} className="text-yellow-400" />
               )}
             </motion.button>
 
@@ -45,7 +48,7 @@ const Navbar: React.FC = () => {
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-8 h-8 rounded-full"
+                  className="w-8 h-8 rounded-full ring-2 ring-indigo-500"
                 />
                 <span className="text-sm font-medium text-[var(--color-text-primary)]">
                   {user.name}

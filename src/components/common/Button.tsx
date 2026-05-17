@@ -28,24 +28,24 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed';
+      'btn-base font-bold rounded-xl transition-all duration-200';
 
     const variants = {
       primary:
-        'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] shadow-lg hover:shadow-xl',
+        'bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:shadow-xl hover:scale-105 active:scale-95',
       secondary:
-        'bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] border-2 border-[var(--color-border)] hover:border-[var(--color-primary)]',
+        'bg-white/10 text-white border-2 border-white/20 hover:bg-white/20 hover:border-white/40',
       danger:
-        'bg-[var(--color-danger)] text-white hover:bg-[#dc2626] shadow-lg hover:shadow-xl',
+        'bg-gradient-to-r from-red-500 to-pink-500 text-white hover:shadow-xl hover:scale-105',
       success:
-        'bg-[var(--color-success)] text-white hover:bg-[#059669] shadow-lg hover:shadow-xl',
+        'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-xl hover:scale-105',
       ghost:
-        'bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-bg-secondary)]',
+        'bg-transparent text-white hover:bg-white/10 border-2 border-transparent hover:border-white/20',
     };
 
     const sizes = {
-      sm: 'px-3 py-1.5 text-sm',
-      md: 'px-4 py-2.5 text-base',
+      sm: 'px-3 py-2 text-sm',
+      md: 'px-5 py-2.5 text-base',
       lg: 'px-6 py-3.5 text-lg',
     };
 

@@ -7,7 +7,6 @@ import { Search, Filter, Plus } from 'lucide-react';
 
 const Tickets: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState('all');
 
   const tickets = [
     {
@@ -44,7 +43,7 @@ const Tickets: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-6">
-          Support Tickets
+          Support Tickets 🎫
         </h1>
 
         {/* Controls */}
@@ -88,23 +87,23 @@ const Tickets: React.FC = () => {
                 </div>
                 <div className="flex gap-2">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`px-3 py-1 rounded-full text-xs font-bold ${
                       ticket.priority === 'high'
-                        ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                        ? 'bg-red-500/20 text-red-600 dark:text-red-300'
                         : ticket.priority === 'medium'
-                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                        : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300'
+                        : 'bg-green-500/20 text-green-600 dark:text-green-300'
                     }`}
                   >
                     {ticket.priority}
                   </span>
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`px-3 py-1 rounded-full text-xs font-bold ${
                       ticket.status === 'open'
-                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                        ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300'
                         : ticket.status === 'in-progress'
-                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-                        : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        ? 'bg-purple-500/20 text-purple-600 dark:text-purple-300'
+                        : 'bg-green-500/20 text-green-600 dark:text-green-300'
                     }`}
                   >
                     {ticket.status}

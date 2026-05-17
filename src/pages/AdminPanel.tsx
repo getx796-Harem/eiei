@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
-import { Users, Shield, Activity, TrendingUp } from 'lucide-react';
+import { Users, Shield, Activity, TrendingUp, Trash2 } from 'lucide-react';
 
 const AdminPanel: React.FC = () => {
   const staffMembers = [
@@ -21,9 +21,9 @@ const AdminPanel: React.FC = () => {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-2">
-          Admin Panel
+          👑 Admin Panel
         </h1>
-        <p className="text-[var(--color-text-secondary)]">
+        <p className="text-[var(--color-text-secondary)] text-lg">
           Manage staff, users, and monitor system health
         </p>
       </motion.div>
@@ -39,17 +39,13 @@ const AdminPanel: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
             >
-              <Card>
+              <Card gradient>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-[var(--color-text-secondary)]">
-                      {stat.label}
-                    </p>
-                    <p className="text-3xl font-bold text-[var(--color-text-primary)] mt-2">
-                      {stat.value}
-                    </p>
+                    <p className="text-sm font-medium opacity-90">{stat.label}</p>
+                    <p className="text-3xl font-bold text-white mt-2">{stat.value}</p>
                   </div>
-                  <Icon size={40} className="text-[var(--color-primary)] opacity-20" />
+                  <Icon size={40} className="opacity-20" />
                 </div>
               </Card>
             </motion.div>
@@ -61,7 +57,7 @@ const AdminPanel: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div className="flex items-center gap-3 mb-6">
-            <Users size={24} className="text-[var(--color-primary)]" />
+            <Users size={24} className="text-indigo-500" />
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Staff Management
             </h2>
@@ -74,10 +70,10 @@ const AdminPanel: React.FC = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex items-center justify-between p-4 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)]"
+                className="flex items-center justify-between p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)] hover:border-indigo-500/50 transition-all"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center text-white font-bold">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
                     {member.name[0]}
                   </div>
                   <div>
@@ -91,10 +87,10 @@ const AdminPanel: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <span
-                    className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${
                       member.status === 'online'
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                        : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+                        ? 'bg-green-500/20 text-green-600 dark:text-green-300'
+                        : 'bg-gray-500/20 text-gray-600 dark:text-gray-300'
                     }`}
                   >
                     <span
@@ -122,7 +118,7 @@ const AdminPanel: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <div className="flex items-center gap-3 mb-6">
-            <Shield size={24} className="text-[var(--color-primary)]" />
+            <Shield size={24} className="text-indigo-500" />
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Moderation Tools
             </h2>
@@ -130,16 +126,16 @@ const AdminPanel: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <Button variant="secondary" fullWidth>
-              Ban User
+              🚫 Ban User
             </Button>
             <Button variant="secondary" fullWidth>
-              Mute User
+              🔇 Mute User
             </Button>
             <Button variant="secondary" fullWidth>
-              View Logs
+              📋 View Logs
             </Button>
-            <Button variant="secondary" fullWidth>
-              Settings
+            <Button variant="danger" fullWidth icon={<Trash2 size={16} />}>
+              Delete
             </Button>
           </div>
         </Card>

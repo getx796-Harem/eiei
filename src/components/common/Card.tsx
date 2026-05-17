@@ -15,14 +15,14 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        whileHover={hover ? { y: -5 } : {}}
+        whileHover={hover ? { y: -5, scale: 1.02 } : {}}
         className={clsx(
-          'rounded-xl border border-[var(--color-border)]',
-          'bg-[var(--color-bg-primary)] p-6',
-          'transition-all duration-300',
-          'shadow-md hover:shadow-xl',
-          gradient &&
-            'bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-white border-0',
+          'rounded-2xl border',
+          'p-6 transition-all duration-300',
+          'shadow-lg hover:shadow-2xl',
+          gradient
+            ? 'bg-gradient-to-br from-indigo-500 to-purple-500 border-0 text-white'
+            : 'bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] border-[var(--color-border)]',
           className
         )}
         {...props}

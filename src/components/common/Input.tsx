@@ -14,31 +14,32 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-semibold text-[var(--color-text-primary)] mb-2">
+          <label className="block text-sm font-semibold text-white mb-2 ml-1">
             {label}
           </label>
         )}
         <motion.div
+          whileFocus="focus"
           className={clsx(
             'relative flex items-center',
-            'border-2 border-[var(--color-border)] rounded-lg',
-            'focus-within:border-[var(--color-primary)] focus-within:shadow-lg',
-            'transition-all duration-200',
-            error && 'border-[var(--color-danger)]'
+            'border-2 border-white/20 rounded-xl bg-white/10',
+            'focus-within:border-indigo-400 focus-within:bg-white/15 focus-within:shadow-lg',
+            'transition-all duration-200 backdrop-blur-sm',
+            error && 'border-red-400/50 bg-red-500/5'
           )}
         >
           {icon && (
-            <span className="absolute left-3 text-[var(--color-text-secondary)]">
+            <span className="absolute left-4 text-white/60">
               {icon}
             </span>
           )}
           <input
             ref={ref}
             className={clsx(
-              'w-full px-4 py-2.5 bg-transparent outline-none',
-              'text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)]',
+              'w-full px-4 py-3 bg-transparent outline-none',
+              'text-white placeholder-white/40',
               'disabled:opacity-50 disabled:cursor-not-allowed',
-              icon && 'pl-10',
+              icon && 'pl-12',
               className
             )}
             {...props}
@@ -48,13 +49,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-1.5 text-sm text-[var(--color-danger)]"
+            className="mt-2 text-sm text-red-300 ml-1"
           >
             {error}
           </motion.p>
         )}
         {helperText && !error && (
-          <p className="mt-1.5 text-sm text-[var(--color-text-tertiary)]">
+          <p className="mt-2 text-sm text-white/60 ml-1">
             {helperText}
           </p>
         )}

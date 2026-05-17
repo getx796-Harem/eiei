@@ -1,81 +1,103 @@
-:root {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #1e40af;
-  --color-secondary: #8b5cf6;
-  --color-danger: #ef4444;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-text-primary: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-text-tertiary: #9ca3af;
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f9fafb;
-  --color-border: #e5e7eb;
-  --color-shadow: rgba(0, 0, 0, 0.1);
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --color-primary: #6366f1;
+    --color-primary-light: #818cf8;
+    --color-primary-dark: #4f46e5;
+    --color-secondary: #8b5cf6;
+    --color-danger: #ef4444;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #94a3b8;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-border: #e2e8f0;
+  }
+
+  [data-theme='dark'] {
+    --color-primary: #818cf8;
+    --color-primary-light: #a5b4fc;
+    --color-primary-dark: #6366f1;
+    --color-secondary: #a78bfa;
+    --color-danger: #f87171;
+    --color-success: #34d399;
+    --color-warning: #fbbf24;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+    --color-text-tertiary: #64748b;
+    --color-bg-primary: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-border: #334155;
+  }
+
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[var(--color-bg-primary)] text-[var(--color-text-primary)];
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
 }
 
-[data-theme='dark'] {
-  --color-primary: #60a5fa;
-  --color-primary-dark: #3b82f6;
-  --color-secondary: #a78bfa;
-  --color-danger: #f87171;
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-text-primary: #f3f4f6;
-  --color-text-secondary: #d1d5db;
-  --color-text-tertiary: #9ca3af;
-  --color-bg-primary: #111827;
-  --color-bg-secondary: #1f2937;
-  --color-border: #374151;
-  --color-shadow: rgba(0, 0, 0, 0.3);
+@layer components {
+  .gradient-primary {
+    @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500;
+  }
+
+  .gradient-secondary {
+    @apply bg-gradient-to-br from-indigo-600 to-purple-600;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+
+  .card-base {
+    @apply bg-[var(--color-bg-primary)] rounded-2xl border border-[var(--color-border)] shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .input-base {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-primary)] focus:shadow-lg transition-all duration-200;
+  }
+
+  .btn-base {
+    @apply font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
+  @apply bg-[var(--color-bg-secondary)];
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  @apply bg-[var(--color-border)] rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-tertiary);
+  @apply bg-[var(--color-text-tertiary)];
 }
 
-/* Selection */
 ::selection {
-  background-color: var(--color-primary);
-  color: white;
+  @apply bg-[var(--color-primary)] text-white;
 }
