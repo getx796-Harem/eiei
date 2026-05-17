@@ -1,0 +1,6 @@
+{
+  "name": "Discord Ticket Bot Dashboard",
+  "description": "A comprehensive Discord ticket management system with a live web dashboard and admin panel.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": []
+}

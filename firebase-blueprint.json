@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Settings": {
+      "title": "Settings",
+      "description": "Global application settings",
+      "type": "object",
+      "properties": {
+        "botToken": { "type": "string" },
+        "adminIp": { "type": "string" }
+      },
+      "required": ["botToken"]
+    },
+    "GuildConfig": {
+      "title": "Guild Configuration",
+      "description": "Configuration for a specific Discord server",
+      "type": "object",
+      "properties": {
+        "guildId": { "type": "string" },
+        "name": { "type": "string" },
+        "ticketCategoryId": { "type": "string" },
+        "adminRoleId": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["guildId", "name"]
+    },
+    "Ticket": {
+      "title": "Ticket",
+      "description": "A support ticket",
+      "type": "object",
+      "properties": {
+        "guildId": { "type": "string" },
+        "channelId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "status": { "type": "string", "enum": ["open", "closed"] },
+        "closedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["guildId", "channelId", "userId", "status", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A message within a ticket",
+      "type": "object",
+      "properties": {
+        "ticketId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "content": { "type": "string" },
+        "source": { "type": "string", "enum": ["discord", "web"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ticketId", "authorId", "authorName", "content", "source", "createdAt"]
+    },
+    "BotToken": {
+      "title": "Bot Token",
+      "description": "Storage for Discord Bot Tokens",
+      "type": "object",
+      "properties": {
+        "token": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["token", "createdAt"]
+    }
+  },
+  "firestore": {
+    "settings/global": {
+      "schema": "Settings",
+      "description": "Global app settings"
+    },
+    "bot_tokens/{tokenId}": {
+      "schema": "BotToken",
+      "description": "Bot tokens for multi-bot support"
+    },
+    "guilds/{guildId}": {
+      "schema": "GuildConfig",
+      "description": "Discord guild specific configuration"
+    },
+    "tickets/{ticketId}": {
+      "schema": "Ticket",
+      "description": "Ticket data"
+    },
+    "tickets/{ticketId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages within a ticket"
+    }
+  }
+}
